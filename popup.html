@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music player</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        font-family: Arial, sans-serif;
+        width: 325px;
+        height: max-content;
+        font-family: "Love Ya Like A Sister", cursive;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        background: linear-gradient(
+          90deg,
+          rgba(224, 69, 69, 1) 17%,
+          rgba(255, 170, 59, 1) 51%,
+          rgba(241, 100, 45, 1) 85%
+        );
+        padding: 15px;
+       
+      }
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .newColor {
+        background: radial-gradient(
+          circle,
+          rgba(224, 0, 178, 1) 16%,
+          rgba(60, 29, 146, 1) 59%,
+          rgba(82, 82, 82, 1) 88%
+        );
+        background-size: 180% 180%;
+        animation: gradient-animation 4s ease infinite;
+      }
+      #trackInfo {
+        font-size: 20px;
+        margin: 7px auto;
+      }
+      #searchInput {
+        text-align: center;
+        padding: 2px;
+        border-radius: 15px;
+        border: 1px solid blue;
+        outline-color: green;
+        margin: 6px;
+        font-weight: 700;
+      }
+      #searchButton {
+        padding: 3px;
+        border-radius: 10px;
+        font-weight: 600;
+        background-color: mediumaquamarine;
+        color: cornsilk;
+      }
+      #searchButton:hover {
+        background-color: teal;
+      }
+
+      #audioPlayer {
+        height: fit-content;
+        width: fit-content;
+        display: none;
+      }
+      #player {
+        width: fit-content;
+        color: floralwhite;
+        margin: auto;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="player">
+        <h1>Spotify Music Player</h1>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for a song..."
+        />
+        <button id="searchButton">Search</button>
+        <div id="trackInfo"></div>
+        <!-- <audio id="audioPlayer" controls src="https://open.spotify.com/track/7BKLCZ1jbUBVqRi2FVlTVw"></audio> -->
+        <h1 id="displayText">Search your favourite songs and hit play</h1>
+        <iframe
+          src=""
+          width="240"
+          height="280"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+          id="audioPlayer"
+        ></iframe>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

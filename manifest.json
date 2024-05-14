@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Music Player",
+    "version": "1.0",
+    "background": {
+        "service_worker": "background.js"
+      },
+    "description": "Play your favourite music",
+    "permissions": ["activeTab",
+    "storage",
+    "audio"],
+    
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "48": "images.png"
+        }
+    },
+    "host_permissions": ["<all_urls>"],
+    "icons": {
+        "48": "images.png"
+    }
+}
