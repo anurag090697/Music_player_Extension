@@ -43,6 +43,12 @@ async function searchTrack(searchTerm) {
     const response = await fetch(url, options);
     const data = await response.json();
     console.log(data);
+    
+    const loader = document.querySelector(".loader-wrapper");
+    loader.style.display = "flex";
+    setTimeout(function () {
+      loader.style.display = "none";
+    }, 2000);
     playMusic(data);
   } catch (error) {
     console.error("Error searching track:", error);
