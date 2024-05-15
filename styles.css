@@ -1,0 +1,200 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  color: black;
+  width: 325px;
+  height: max-content;
+  font-family: "Marcellus", serif;
+  font-weight: 700;
+  font-style: normal;
+  text-align: center;
+  background: linear-gradient(27deg, rgba(0,190,198,1) 36%, rgba(210,244,255,1) 49%, rgba(0,170,183,1) 69%);
+  background-size: 180% 180%;
+  animation: gradient-animation 4s ease infinite;
+  padding: 15px;
+  height: 360px;
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.newColor {
+  color: azure;
+  background: radial-gradient(
+    circle,
+    rgb(43, 198, 233) 16%,
+    rgb(60, 23, 163) 44%,
+    rgb(70, 70, 70) 85%
+  );
+  background-size: 180% 180%;
+  animation: gradient-animation 4s ease infinite;
+}
+.trackInfs {
+  font-size: 20px;
+  margin: 7px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#searchInput {
+  text-align: center;
+  padding: 6px;
+  width: 8rem;
+  border-radius: 15px;
+  border: 1px solid blue;
+  outline-color: green;
+  margin: 6px;
+  font-weight: 700;
+}
+/* #searchButton {
+  padding: 3px;
+  border-radius: 10px;
+  font-weight: 600;
+  background-color: rgb(0, 33, 223);
+  color: cornsilk;
+} */
+/* #searchButton:hover {
+  background-color: rgb(6, 110, 255);
+} */
+
+#audioPlayer {
+  height: fit-content;
+  width: fit-content;
+  display: none;
+}
+#player {
+  width: fit-content;
+  /* color: floralwhite; */
+  margin: auto;
+}
+.navbtns {
+  border-radius: 50%;
+  padding: 6px 3px;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(255, 255, 255);
+  width: 38px;
+  height: 36px;
+  padding-left: 9px;
+  outline: none;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  display: none;
+}
+.navbtns:hover {
+  background-color: rgba(177, 199, 240, 0);
+  color: black;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+
+
+
+.button-57 {
+  position: relative;
+  overflow: hidden;
+  /* border: 1px solid #18181a; */
+  color: #18181a;
+  display: inline-block;
+  /* font-size: 15px; */
+  line-height: 15px;
+  padding: 3px 4px;
+  text-decoration: none;
+  cursor: pointer;
+  /* background: linear-gradient(0deg, rgba(183,226,224,1) 16%, rgba(92,177,184,1) 47%, rgba(218,252,255,1) 79%); */
+font-weight: 700;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-57 span:first-child {
+  position: relative;
+  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 10;
+}
+
+.button-57 span:last-child {
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 100;
+  opacity: 0;
+  top: 59%;
+  left: 50%;
+  transform: translateY(225%) translateX(-50%);
+  /* height: 14px; */
+  /* line-height: 13px; */
+}
+
+.button-57:after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transform-origin: bottom center;
+  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  transform: skewY(9.3deg) scaleY(0);
+  z-index: 50;
+}
+
+.button-57:hover:after {
+  transform-origin: bottom center;
+  transform: skewY(9.3deg) scaleY(2);
+}
+
+.button-57:hover span:last-child {
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 1;
+  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}
+
+#localPlay::file-selector-button {
+  font-weight: bold;
+  color: rgb(193, 0, 0);
+  padding: 0.5em;
+  border: thin solid grey;
+  border-radius: 9px;
+  margin: auto;
+  background: linear-gradient(8deg, rgba(200,200,200,1) 20%, rgba(160,196,205,1) 51%, rgba(92,177,184,1) 82%);
+}
+#localPlay{
+  color: transparent;
+  width: 95px; 
+}
+#localPlay::file-selector-button:hover{
+  background: linear-gradient(8deg, rgba(200,200,200,1) 20%, rgb(68, 169, 194) 51%, rgb(0, 137, 149) 82%);
+}
+#playerLocal{
+  display: none;
+  
+  margin: 3rem auto;
+}

@@ -1,21 +1,42 @@
+// var textWrapper = document.querySelector('.ml2');
+// textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+// anime.timeline({loop: false})
+//   .add({
+//     targets: '.ml2 .letter',
+//     scale: [4,1],
+//     opacity: [0,1],
+//     translateZ: 0,
+//     easing: "easeOutExpo",
+//     duration: 950,
+//     delay: (el, i) => 70*i
+//   });
+
+
 let currentTrackIndex = 0;
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const trackInfo = document.getElementById("trackInfo");
 const audioPlayer = document.getElementById("audioPlayer");
 const container = document.querySelector(".container");
-
+let displayText = document.getElementById("displayText");
 let storedSongData = localStorage.getItem("songData");
+let player = document.getElementById("player");
+
+function changeView() {
+  // trackInfo.innerHTML = parsedData.info;
+  displayText.style.display = "none";
+
+  container.classList.add("newColor");
+}
 
 if (storedSongData) {
   const parsedData = JSON.parse(storedSongData);
   if (parsedData && parsedData.url && parsedData.info) {
     audioPlayer.src = parsedData.url;
-    trackInfo.innerHTML = parsedData.info;
-    let displayText = (document.getElementById("displayText").style.display =
-      "none");
     audioPlayer.style.display = "block";
-    container.classList.add("newColor");
+    displayText.style.display = "none";
+    trackInfo.innerHTML = parsedData.info;
   }
 }
 
@@ -43,7 +64,7 @@ async function searchTrack(searchTerm) {
     const response = await fetch(url, options);
     const data = await response.json();
     console.log(data);
-    
+
     const loader = document.querySelector(".loader-wrapper");
     loader.style.display = "flex";
     setTimeout(function () {
@@ -96,10 +117,11 @@ function playMusic(data) {
 
     if (previewUrl) {
       audioPlayer.src = previewUrl;
-      let displayText = (document.getElementById("displayText").style.display =
-        "none");
+      // let displayText = (document.getElementById("displayText").style.display =
+      //   "none");
       audioPlayer.style.display = "block";
-      container.classList.add("newColor");
+      // container.classList.add("newColor");
+      changeView();
       navbtns.forEach((btn) => (btn.style.display = "block")); // Adjusted this line
 
       chrome.runtime.sendMessage({ type: "UPDATE_BADGE", text: "1" });
@@ -123,4 +145,33 @@ function nextSong(data) {
   currentTrackIndex++;
   playMusic(data);
   console.log("next");
+}
+
+let localPlay = document.getElementById("localPlay");
+let playerLocal = document.getElementById("playerLocal");
+
+localPlay.addEventListener("change", function () {
+  playLocalsong(this.files[0]);
+});
+
+  // Send a message to the background script to play audio
+  function playAudio(audioUrl) {
+    chrome.runtime.sendMessage({ action: "playAudio", audioUrl: audioUrl });
+  }
+  
+  // Send a message to the background script to pause audio
+  function pauseAudio() {
+    chrome.runtime.sendMessage({ action: "pauseAudio" });
+  }
+
+function playLocalsong(file) {
+  let url = URL.createObjectURL(file);
+  playerLocal.src = url;
+  console.log(file);
+  trackInfo.innerText = file.name;
+  changeView();
+  playerLocal.style.display = "block";
+  audioPlayer.style.display = "none";
+
+playAudio(url);
 }

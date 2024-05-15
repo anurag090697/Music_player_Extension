@@ -4,119 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music player</title>
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-      .container {
-        font-family: Arial, sans-serif;
-        width: 325px;
-        height: max-content;
-        font-family: "Love Ya Like A Sister", cursive;
-        font-weight: 400;
-        font-style: normal;
-        text-align: center;
-        background: linear-gradient(
-          90deg,
-          rgba(224, 69, 69, 1) 17%,
-          rgba(255, 170, 59, 1) 51%,
-          rgba(241, 100, 45, 1) 85%
-        );
-        padding: 15px;
-      }
-      @keyframes gradient-animation {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-      .newColor {
-        background: radial-gradient(
-          circle,
-          rgba(224, 0, 178, 1) 16%,
-          rgba(60, 29, 146, 1) 59%,
-          rgba(82, 82, 82, 1) 88%
-        );
-        background-size: 180% 180%;
-        animation: gradient-animation 4s ease infinite;
-      }
-      .trackInfs {
-        font-size: 20px;
-        margin: 7px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      #searchInput {
-        text-align: center;
-        padding: 2px;
-        border-radius: 15px;
-        border: 1px solid blue;
-        outline-color: green;
-        margin: 6px;
-        font-weight: 700;
-      }
-      #searchButton {
-        padding: 3px;
-        border-radius: 10px;
-        font-weight: 600;
-        background-color: mediumaquamarine;
-        color: cornsilk;
-      }
-      #searchButton:hover {
-        background-color: teal;
-      }
-
-      #audioPlayer {
-        height: fit-content;
-        width: fit-content;
-        display: none;
-      }
-      #player {
-        width: fit-content;
-        color: floralwhite;
-        margin: auto;
-      }
-      .navbtns {
-        border-radius: 50%;
-        padding: 6px 3px;
-        background-color: rgba(0, 0, 0, 0);
-        color: rgb(255, 255, 255);
-        width: 38px;
-        height: 36px;
-        padding-left: 9px;
-        outline: none;
-        border: none;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-        display: none;
-      }
-      .navbtns:hover {
-        background-color: rgba(177, 199, 240, 0);
-        color: black;
-        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-          rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-      }
-      .loader-wrapper {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgb(255, 255, 255);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -131,13 +19,15 @@
   <body>
     <div class="container">
       <div id="player">
-        <h1>Spotify Music Player</h1>
+        <h1 class="ml2">Spotify Music Player</h1>
         <input
           type="text"
           id="searchInput"
           placeholder="Search for a song..."
         />
-        <button id="searchButton">Search</button>
+        <!-- <button id="searchButton">Play</button> -->
+        <button class="button-57" role="button" id="searchButton"><span class="text">Search</span><span>Play</span></button>
+        <input type="file" id="localPlay" title=" " />
         <div class="trackInfs">
           <button class="navbtns" id="prevBtn" type="button">
             <span class="material-symbols-outlined"> arrow_back_ios </span>
@@ -147,7 +37,7 @@
             <span class="material-symbols-outlined">arrow_forward_ios</span>
           </button>
         </div>
-        <!-- <audio id="audioPlayer" controls src="https://open.spotify.com/track/7BKLCZ1jbUBVqRi2FVlTVw"></audio> -->
+
         <h1 id="displayText">Search your favourite songs and hit play</h1>
         <iframe
           src=""
@@ -159,10 +49,18 @@
           id="audioPlayer"
         ></iframe>
       </div>
+      <audio
+        id="playerLocal"
+        controls
+        src=""
+        preload="auto"
+      ></audio>
     </div>
     <div class="loader-wrapper">
       <img src="loading.gif" alt="Loading..." class="loader" />
     </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script> -->
     <script src="popup.js"></script>
+    
   </body>
 </html>
